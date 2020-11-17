@@ -6,7 +6,7 @@ require_once("conexion.php");
     $fila = array();
     $modelo = new conexion();
     $conexion = $modelo-> getConexion();
-    $sql = "SELECT * FROM productoL";
+    $sql = "SELECT * FROM productol";
     $cosulta = $conexion->prepare($sql);
     $cosulta-> execute();
     while($resultado = $cosulta-> fetch()){

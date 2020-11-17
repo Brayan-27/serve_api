@@ -17,7 +17,7 @@ $data = json_decode(file_get_contents("php://input"),true);
 
         $modelo = new conexion();
         $conexion = $modelo->getConexion();
-        $sql = "INSERT INTO tb_semanalL(numsemana, descripcion, lunes, martes, miercoles, jueves, viernes, sabado, domingo) VALUES(:numsemana, :descripcion, :lunes, :martes, :miercoles, :jueves, :viernes, :sabado, :domingo)";
+        $sql = "INSERT INTO tb_semanall(numsemana, descripcion, lunes, martes, miercoles, jueves, viernes, sabado, domingo) VALUES(:numsemana, :descripcion, :lunes, :martes, :miercoles, :jueves, :viernes, :sabado, :domingo)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindParam(':numsemana', $numsemana);
             $consulta->bindParam(':descripcion', $descripcion);

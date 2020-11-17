@@ -14,7 +14,7 @@ $data = json_decode(file_get_contents("php://input"),true);
  
         $modelo = new conexion();
         $conexion = $modelo->getConexion();
-        $sql = "INSERT INTO productoL(tipo, nombreali, cantidad_pro, cantidad_min, cantidad_med, cantidad_max) VALUES(:tipo, :nombreali, :cantidad_pro, :cantidad_min, :cantidad_med, :cantidad_max)";
+        $sql = "INSERT INTO productol(tipo, nombreali, cantidad_pro, cantidad_min, cantidad_med, cantidad_max) VALUES(:tipo, :nombreali, :cantidad_pro, :cantidad_min, :cantidad_med, :cantidad_max)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindParam(':tipo', $tipo);
             $consulta->bindParam(':nombreali', $nombreali);

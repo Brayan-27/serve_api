@@ -103,7 +103,7 @@ elseif($postjson['aksi'] == "del_users") {
 
 elseif($postjson['aksi'] == "eliminar_PDA") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM Pedidos_Diario_Altiplano WHERE id_PDA='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM pedidos_diario_altiplano WHERE id_PDA='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -117,7 +117,7 @@ elseif($postjson['aksi'] == "eliminar_PDA") {
 
 elseif($postjson['aksi'] == "eliminar_PDL") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM Pedidos_Diario_Llano WHERE id_PDL='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM pedidos_diario_llano WHERE id_PDL='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -130,7 +130,7 @@ elseif($postjson['aksi'] == "eliminar_PDL") {
 
 elseif($postjson['aksi'] == "eliminar_PDV") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM Pedidos_Diario_Valle WHERE id_PDV='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM pedidos_diario_valle WHERE id_PDV='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -144,7 +144,7 @@ elseif($postjson['aksi'] == "eliminar_PDV") {
 
 elseif($postjson['aksi'] == "eliminar_PSA") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM Pedidos_Semanal_Altiplano WHERE id_PSA='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM pedidos_semanal_altiplano WHERE id_PSA='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -158,7 +158,7 @@ elseif($postjson['aksi'] == "eliminar_PSA") {
 
 elseif($postjson['aksi'] == "eliminar_PSL") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM Pedidos_Semanal_Llanos WHERE id_PSL='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM pedidos_semanal_llanos WHERE id_PSL='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -171,7 +171,7 @@ elseif($postjson['aksi'] == "eliminar_PSL") {
 
 elseif($postjson['aksi'] == "eliminar_PSV") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM Pedidos_Semanal_Valle WHERE id_PSV='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM pedidos_semanal_valle WHERE id_PSV='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -184,7 +184,7 @@ elseif($postjson['aksi'] == "eliminar_PSV") {
 
 elseif($postjson['aksi'] == "eliminar_MSA") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM tb_semanalA WHERE id_a='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM tb_semanala WHERE id_a='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -197,7 +197,7 @@ elseif($postjson['aksi'] == "eliminar_MSA") {
 
 elseif($postjson['aksi'] == "eliminar_MSL") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM tb_semanalL WHERE id_l='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM tb_semanall WHERE id_l='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -223,7 +223,7 @@ elseif($postjson['aksi'] == "eliminar_MSV") {
 
 elseif($postjson['aksi'] == "eliminar_DA") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM dato_diarioA WHERE id_DA='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM dato_diarioa WHERE id_DA='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -236,7 +236,7 @@ elseif($postjson['aksi'] == "eliminar_DA") {
 
 elseif($postjson['aksi'] == "eliminar_DL") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM dato_diarioL WHERE id_DL='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM dato_diariol WHERE id_DL='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -249,7 +249,7 @@ elseif($postjson['aksi'] == "eliminar_DL") {
 
 elseif($postjson['aksi'] == "eliminar_DV") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM dato_diarioV WHERE id_DV='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM dato_diariov WHERE id_DV='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -337,14 +337,14 @@ elseif($postjson['aksi'] == "load_single_data") {
 
 if($postjson['aksi'] == "proses_registeradmin") {
 
-  $cekemail = mysqli_fetch_array(mysqli_query($mysqli, "SELECT usuarioadmin FROM tb_usersAdmin WHERE usuarioadmin='$postjson[usuarioadmin]'"));
+  $cekemail = mysqli_fetch_array(mysqli_query($mysqli, "SELECT usuarioadmin FROM tb_usersadmin WHERE usuarioadmin='$postjson[usuarioadmin]'"));
 
   if($cekemail['usuarioadmin']==$postjson['usuarioadmin']) {
     $result = json_encode(array('success'=>false, 'msg'=>'Email is already'));
   }else{
 
     $passadmin = md5($postjson['passadmin']);
-    $insert = mysqli_query($mysqli, "INSERT INTO tb_usersAdmin SET 
+    $insert = mysqli_query($mysqli, "INSERT INTO tb_usersadmin SET 
     usuarioadmin       = '$postjson[usuarioadmin]',
     passadmin        = '$passadmin',
     created_ata      = '$today'
@@ -362,7 +362,7 @@ if($postjson['aksi'] == "proses_registeradmin") {
 elseif($postjson['aksi'] == "proses_loginadim") {
 
   $passadmin = md5($postjson['passadmin']);
-  $logindata = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM tb_usersAdmin WHERE usuarioadmin='$postjson[usuarioadmin]' AND passadmin='$passadmin'")); 
+  $logindata = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM tb_usersadmin WHERE usuarioadmin='$postjson[usuarioadmin]' AND passadmin='$passadmin'")); 
   $data = array(
     'id_usera'       => $logindata['id_usera'],
     'usuarioadmin'       => $logindata['usuarioadmin']
@@ -378,7 +378,7 @@ elseif($postjson['aksi'] == "proses_loginadim") {
 elseif($postjson['aksi'] == "load_usersadmin") {
   $data = array();
 
-  $query = mysqli_query($mysqli, "SELECT * FROM tb_usersAdmin ORDER BY id_usera DESC LIMIT $postjson[start],$postjson[limit]");
+  $query = mysqli_query($mysqli, "SELECT * FROM tb_usersadmin ORDER BY id_usera DESC LIMIT $postjson[start],$postjson[limit]");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -400,7 +400,7 @@ elseif($postjson['aksi'] == "load_usersadmin") {
 
 elseif($postjson['aksi'] == "del_usersadmin") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM tb_usersAdmin WHERE id_usera='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM tb_usersadmin WHERE id_usera='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -414,7 +414,7 @@ elseif($postjson['aksi'] == "del_usersadmin") {
 
 elseif($postjson['aksi'] == "del_productoA") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM productoA WHERE id_PA='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM productoa WHERE id_PA='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -428,7 +428,7 @@ elseif($postjson['aksi'] == "del_productoA") {
 
 elseif($postjson['aksi'] == "del_productoV") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM productoV WHERE id_PV='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM productov WHERE id_PV='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -442,7 +442,7 @@ elseif($postjson['aksi'] == "del_productoV") {
 
 elseif($postjson['aksi'] == "del_productoL") {
   
-  $query = mysqli_query($mysqli, "DELETE FROM productoL WHERE id_PL='$postjson[id]'");
+  $query = mysqli_query($mysqli, "DELETE FROM productol WHERE id_PL='$postjson[id]'");
   
   if($query){
     $result = json_encode(array('success' => true));
@@ -460,7 +460,7 @@ elseif($postjson['aksi'] == "del_productoL") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPDA") {
-  $query = mysqli_query($mysqli, "SELECT * FROM Pedidos_Diario_Altiplano WHERE id_PDA = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM pedidos_diario_altiplano WHERE id_PDA = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -484,7 +484,7 @@ elseif($postjson['aksi'] == "load_single_dataPDA") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPDL") {
-  $query = mysqli_query($mysqli, "SELECT * FROM Pedidos_Diario_Llano WHERE id_PDL = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM pedidos_diario_llano WHERE id_PDL = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -508,7 +508,7 @@ elseif($postjson['aksi'] == "load_single_dataPDL") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPDV") {
-  $query = mysqli_query($mysqli, "SELECT * FROM Pedidos_Diario_Valle WHERE id_PDV = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM pedidos_diario_valle WHERE id_PDV = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -531,7 +531,7 @@ elseif($postjson['aksi'] == "load_single_dataPDV") {
 }
 
 elseif($postjson['aksi'] == "load_single_dataMSA") {
-  $query = mysqli_query($mysqli, "SELECT * FROM tb_semanalA WHERE id_a = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM tb_semanala WHERE id_a = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -556,7 +556,7 @@ elseif($postjson['aksi'] == "load_single_dataMSA") {
 }
 
 elseif($postjson['aksi'] == "load_single_dataMSL") {
-  $query = mysqli_query($mysqli, "SELECT * FROM tb_semanalL WHERE id_l = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM tb_semanall WHERE id_l = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -608,7 +608,7 @@ elseif($postjson['aksi'] == "load_single_dataMSV") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPSA") {
-  $query = mysqli_query($mysqli, "SELECT * FROM Pedidos_Semanal_Altiplano WHERE id_PSA = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM pedidos_semanal_altiplano WHERE id_PSA = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -634,7 +634,7 @@ elseif($postjson['aksi'] == "load_single_dataPSA") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPSV") {
-  $query = mysqli_query($mysqli, "SELECT * FROM Pedidos_Semanal_Valle WHERE id_PSV = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM pedidos_semanal_valle WHERE id_PSV = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -660,7 +660,7 @@ elseif($postjson['aksi'] == "load_single_dataPSV") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPSL") {
-  $query = mysqli_query($mysqli, "SELECT * FROM Pedidos_Semanal_Llanos WHERE id_PSL = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM pedidos_semanal_llanos WHERE id_PSL = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -688,7 +688,7 @@ elseif($postjson['aksi'] == "load_single_dataPSL") {
 
 elseif($postjson['aksi'] == "mod_crudPDA") {
 
-  $updt = mysqli_query($mysqli, "UPDATE Pedidos_Diario_Altiplano SET 
+  $updt = mysqli_query($mysqli, "UPDATE pedidos_diario_altiplano SET 
       Des_de_alimnentos       = '$postjson[Des_de_alimnentos]',
       Unidad_de_Media          = '$postjson[Unidad_de_Media]',
       Gr_ML_Desayuno   = '$postjson[Gr_ML_Desayuno]',
@@ -707,7 +707,7 @@ elseif($postjson['aksi'] == "mod_crudPDA") {
 
 elseif($postjson['aksi'] == "mod_crudPDV") {
 
-  $updt = mysqli_query($mysqli, "UPDATE Pedidos_Diario_Valle SET 
+  $updt = mysqli_query($mysqli, "UPDATE pedidos_diario_valle SET 
       Des_de_alimnentos       = '$postjson[Des_de_alimnentos]',
       Unidad_de_Media          = '$postjson[Unidad_de_Media]',
       Gr_ML_Desayuno   = '$postjson[Gr_ML_Desayuno]',
@@ -725,7 +725,7 @@ elseif($postjson['aksi'] == "mod_crudPDV") {
 
 elseif($postjson['aksi'] == "mod_crudPDL") {
 
-  $updt = mysqli_query($mysqli, "UPDATE Pedidos_Diario_Llano SET 
+  $updt = mysqli_query($mysqli, "UPDATE pedidos_diario_llano SET 
       Des_de_alimnentos       = '$postjson[Des_de_alimnentos]',
       Unidad_de_Media          = '$postjson[Unidad_de_Media]',
       Gr_ML_Desayuno   = '$postjson[Gr_ML_Desayuno]',
@@ -744,7 +744,7 @@ elseif($postjson['aksi'] == "mod_crudPDL") {
 
 elseif($postjson['aksi'] == "mod_crudMSA") {
 
-  $updt = mysqli_query($mysqli, "UPDATE tb_semanalA  SET 
+  $updt = mysqli_query($mysqli, "UPDATE tb_semanala  SET 
       numsemana       = '$postjson[numsemana]',
       descripcion          = '$postjson[descripcion]',
       lunes   = '$postjson[lunes]',
@@ -766,7 +766,7 @@ elseif($postjson['aksi'] == "mod_crudMSA") {
 
 elseif($postjson['aksi'] == "mod_crudMSL") {
 
-  $updt = mysqli_query($mysqli, "UPDATE tb_semanalL  SET 
+  $updt = mysqli_query($mysqli, "UPDATE tb_semanall  SET 
       numsemana       = '$postjson[numsemana]',
       descripcion          = '$postjson[descripcion]',
       lunes   = '$postjson[lunes]',
@@ -809,7 +809,7 @@ elseif($postjson['aksi'] == "mod_crudMSV") {
 
 elseif($postjson['aksi'] == "mod_crudPSA") {
 
-  $updt = mysqli_query($mysqli, "UPDATE Pedidos_Semanal_Altiplano  SET 
+  $updt = mysqli_query($mysqli, "UPDATE pedidos_semanal_altiplano  SET 
       Des_de_semana       = '$postjson[Des_de_semana]',
       mes          = '$postjson[mes]',
       lunes   = '$postjson[lunes]',
@@ -833,7 +833,7 @@ elseif($postjson['aksi'] == "mod_crudPSA") {
 
 elseif($postjson['aksi'] == "mod_crudPSL") {
 
-  $updt = mysqli_query($mysqli, "UPDATE Pedidos_Semanal_Llanos  SET 
+  $updt = mysqli_query($mysqli, "UPDATE pedidos_semanal_llanos  SET 
       Des_de_semana       = '$postjson[Des_de_semana]',
       mes          = '$postjson[mes]',
       lunes   = '$postjson[lunes]',
@@ -856,7 +856,7 @@ elseif($postjson['aksi'] == "mod_crudPSL") {
 
 elseif($postjson['aksi'] == "mod_crudPSV") {
 
-  $updt = mysqli_query($mysqli, "UPDATE Pedidos_Semanal_Valle  SET 
+  $updt = mysqli_query($mysqli, "UPDATE pedidos_semanal_valle  SET 
       Des_de_semana       = '$postjson[Des_de_semana]',
       mes          = '$postjson[mes]',
       lunes   = '$postjson[lunes]',
@@ -879,7 +879,7 @@ elseif($postjson['aksi'] == "mod_crudPSV") {
 
 elseif($postjson['aksi'] == "mod_crudPA") {
 
-  $updt = mysqli_query($mysqli, "UPDATE productoA  SET 
+  $updt = mysqli_query($mysqli, "UPDATE productoa  SET 
       tipo       = '$postjson[tipo]',
       nombreali       = '$postjson[nombreali]',
       cantidad_pro       = '$postjson[cantidad_pro]',
@@ -897,7 +897,7 @@ elseif($postjson['aksi'] == "mod_crudPA") {
 
 elseif($postjson['aksi'] == "mod_crudPV") {
 
-  $updt = mysqli_query($mysqli, "UPDATE productoV  SET 
+  $updt = mysqli_query($mysqli, "UPDATE productov  SET 
       tipo       = '$postjson[tipo]',
       nombreali       = '$postjson[nombreali]',
       cantidad_pro       = '$postjson[cantidad_pro]',
@@ -916,7 +916,7 @@ elseif($postjson['aksi'] == "mod_crudPV") {
 
 elseif($postjson['aksi'] == "mod_crudPL") {
 
-  $updt = mysqli_query($mysqli, "UPDATE productoL  SET 
+  $updt = mysqli_query($mysqli, "UPDATE productol  SET 
       tipo       = '$postjson[tipo]',
       nombreali       = '$postjson[nombreali]',
       cantidad_pro       = '$postjson[cantidad_pro]',
@@ -934,7 +934,7 @@ elseif($postjson['aksi'] == "mod_crudPL") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPA") {
-  $query = mysqli_query($mysqli, "SELECT * FROM productoA WHERE id_PA = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM productoa WHERE id_PA = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -958,7 +958,7 @@ elseif($postjson['aksi'] == "load_single_dataPA") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPV") {
-  $query = mysqli_query($mysqli, "SELECT * FROM productoV WHERE id_PV = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM productov WHERE id_PV = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 
@@ -981,7 +981,7 @@ elseif($postjson['aksi'] == "load_single_dataPV") {
 
 
 elseif($postjson['aksi'] == "load_single_dataPL") {
-  $query = mysqli_query($mysqli, "SELECT * FROM productoL WHERE id_PL = '$postjson[id]'");
+  $query = mysqli_query($mysqli, "SELECT * FROM productol WHERE id_PL = '$postjson[id]'");
 
   while ($rows = mysqli_fetch_array($query)){
 

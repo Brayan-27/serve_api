@@ -19,7 +19,7 @@ $data = json_decode(file_get_contents("php://input"),true);
 
         $modelo = new conexion();
         $conexion = $modelo->getConexion();
-        $sql = "INSERT INTO Pedidos_Semanal_Llanos(Des_de_semana, mes, lunes, martes, miercoles, jueves, viernes, sabado, domingo) VALUES(:Des_de_semana, :mes, :lunes, :martes, :miercoles, :jueves, :viernes, :sabado, :domingo)";
+        $sql = "INSERT INTO pedidos_semanal_llanos(Des_de_semana, mes, lunes, martes, miercoles, jueves, viernes, sabado, domingo) VALUES(:Des_de_semana, :mes, :lunes, :martes, :miercoles, :jueves, :viernes, :sabado, :domingo)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindParam(':Des_de_semana', $Des_de_semana);
             $consulta->bindParam(':mes', $mes);

@@ -16,7 +16,7 @@ $data = json_decode(file_get_contents("php://input"),true);
 
         $modelo = new conexion();
         $conexion = $modelo->getConexion();
-        $sql = "INSERT INTO Pedidos_Diario_Valle(Des_de_alimnentos, Unidad_de_Media, Gr_ML_Desayuno, Gr_ML_Sopa, Gr_ML_Segundo, Gr_ML_Cena) VALUES(:Des_de_alimnentos, :Unidad_de_Media, :Gr_ML_Desayuno, :Gr_ML_Sopa, :Gr_ML_Segundo, :Gr_ML_Cena)";
+        $sql = "INSERT INTO pedidos_diario_valle(Des_de_alimnentos, Unidad_de_Media, Gr_ML_Desayuno, Gr_ML_Sopa, Gr_ML_Segundo, Gr_ML_Cena) VALUES(:Des_de_alimnentos, :Unidad_de_Media, :Gr_ML_Desayuno, :Gr_ML_Sopa, :Gr_ML_Segundo, :Gr_ML_Cena)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindParam(':Des_de_alimnentos', $Des_de_alimnentos);
             $consulta->bindParam(':Unidad_de_Media', $Unidad_de_Media);

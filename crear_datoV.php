@@ -11,7 +11,7 @@ $data = json_decode(file_get_contents("php://input"),true);
 
         $modelo = new conexion();
         $conexion = $modelo->getConexion();
-        $sql = "INSERT INTO dato_diarioV(semana, total_costo) VALUES(:semana, :total_costo)";
+        $sql = "INSERT INTO dato_diariov(semana, total_costo) VALUES(:semana, :total_costo)";
             $consulta = $conexion->prepare($sql);
             $consulta->bindParam(':semana', $semana);
             $consulta->bindParam(':total_costo', $total_costo);
